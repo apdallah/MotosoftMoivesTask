@@ -9,6 +9,7 @@ public interface MoiveListView {
 
 void getMoivesList(List<MoiveEntitiy> moiveList);
 void showloading();
-void hideLoading();
+    void hideLoading();
+    void onItemCLick();
 
 }

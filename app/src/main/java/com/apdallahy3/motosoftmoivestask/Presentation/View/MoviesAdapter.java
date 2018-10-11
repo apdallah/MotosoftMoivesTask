@@ -19,13 +19,18 @@ import butterknife.ButterKnife;
 
 public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.ViewHolder> {
 List<MoiveEntitiy>moivesList;
+private final OnItemClickListener listener;
 
+    public MoviesAdapter(OnItemClickListener listener) {
+        this.listener = listener;
+    }
 
     public void setMoivesList(List<MoiveEntitiy> moivesList) {
 
         this.moivesList = moivesList;
         notifyDataSetChanged();
     }
+
 
     @NonNull
     @Override
@@ -41,6 +46,7 @@ List<MoiveEntitiy>moivesList;
                 .load("https://image.tmdb.org/t/p/w500/"+moivesList.get(i).getPosterPath())
                 .error(R.mipmap.ic_launcher)
                 .into(viewHolder.imageView);
+        viewHolder.click(moivesList.get(i),listener);
     }
 
     @Override
@@ -56,8 +62,14 @@ List<MoiveEntitiy>moivesList;
             super(itemView);
             ButterKnife.bind(this,itemView);
         }
-
-
+        public void click(final MoiveEntitiy moiveEntitiy, final OnItemClickListener listener) {
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    listener.onClick(moiveEntitiy);
+                }
+            });
+        }
 
     }
 }

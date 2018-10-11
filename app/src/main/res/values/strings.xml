@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">MotoSoftMoivesTask</string>
+    <string name="app_name">Moives</string>
+    <string name="title_activity_moive_details">Moives </string>
 </resources>
