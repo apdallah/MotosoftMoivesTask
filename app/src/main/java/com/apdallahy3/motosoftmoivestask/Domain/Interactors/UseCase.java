@@ -14,9 +14,10 @@ abstract class UseCase<T,Params> {
 private final CompositeDisposable compositeDisposable;
 
     protected UseCase() {
+
         this.compositeDisposable = new CompositeDisposable();
     }
-abstract Observable<T> bulidUseCasaeObserable(Params params);
+     abstract Observable<T> bulidUseCasaeObserable(Params params);
 
     public void excute(DisposableObserver<T> observer,Params params){
                 final Observable<T> observable=bulidUseCasaeObserable(params)

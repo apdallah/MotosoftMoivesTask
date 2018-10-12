@@ -1,10 +1,9 @@
 package com.apdallahy3.motosoftmoivestask.Presentation.Presenter;
 
 import android.util.Log;
-import android.widget.Toast;
 
 import com.apdallahy3.motosoftmoivestask.Data.Entities.MoiveEntitiy;
-import com.apdallahy3.motosoftmoivestask.Presentation.View.MoiveView;
+import com.apdallahy3.motosoftmoivestask.Presentation.View.Interfaces.MoiveView;
 
 public class MoiveDetailPresnter {
     MoiveView moiveView;

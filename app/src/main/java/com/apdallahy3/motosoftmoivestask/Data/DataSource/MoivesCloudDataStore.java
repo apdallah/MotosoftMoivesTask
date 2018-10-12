@@ -28,8 +28,9 @@ public class MoivesCloudDataStore implements MoivesDataStore{
         return getMoivesDataService.getMoives("08980860fff5f4434c80dc7b767c8a7e").doOnNext(new Consumer<MoiveResponse>() {
             @Override
             public void accept(MoiveResponse moiveResponses) throws Exception {
-
-                moivesChache.putMoives(moiveResponses.getResults());
+            Log.i("MoivesCloudDataStore",moiveResponses.getResults().size()+"");
+                //Cache Data here
+               // moivesChache.putMoives(moiveResponses.getResults());
             }
         });
 //

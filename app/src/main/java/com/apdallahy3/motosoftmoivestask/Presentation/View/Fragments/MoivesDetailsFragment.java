@@ -1,8 +1,13 @@
-package com.apdallahy3.motosoftmoivestask.Presentation.View.Activites;
+package com.apdallahy3.motosoftmoivestask.Presentation.View.Fragments;
 
+import android.content.Context;
+import android.net.Uri;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v4.app.Fragment;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -15,7 +20,12 @@ import com.squareup.picasso.Picasso;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MoiveDetailsActivity extends AppCompatActivity implements MoiveView {
+public class MoivesDetailsFragment extends Fragment implements MoiveView {
+     @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+     }
+View view;
     @BindView(R.id.imageview)
     ImageView poster;
     @BindView(R.id.title)
@@ -29,23 +39,22 @@ public class MoiveDetailsActivity extends AppCompatActivity implements MoiveView
     private MoiveDetailPresnter moiveDetailPresnter;
 
 
-
-
-
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_moives_details);
-        ButterKnife.bind(this);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        view= inflater.inflate(R.layout.fragment_moives_details, container, false);
+        ButterKnife.bind(this,view);
         moiveDetailPresnter=new MoiveDetailPresnter(this);
-        if(getIntent().hasExtra("movie")){
-            MoiveEntitiy moiveEntitiy=(MoiveEntitiy)getIntent().getSerializableExtra("movie");
+        if(getArguments()!=null){
+            MoiveEntitiy moiveEntitiy=(MoiveEntitiy)getArguments().getSerializable("movie");
             moiveDetailPresnter.setMoive(moiveEntitiy);
             Log.i("InfoDe",moiveEntitiy.getTitle());
+
             moiveDetailPresnter.initalize();
 
         }
-
+        return view;
     }
 
     @Override
@@ -55,7 +64,7 @@ public class MoiveDetailsActivity extends AppCompatActivity implements MoiveView
 
     @Override
     public void setMoivePoster(String path) {
-        Picasso.with(this)
+        Picasso.with(getContext())
                 .load("https://image.tmdb.org/t/p/w500/"+path)
                 .error(R.mipmap.ic_launcher)
                 .into(this.poster);

@@ -6,7 +6,7 @@ import com.apdallahy3.motosoftmoivestask.Data.Entities.MoiveEntitiy;
 import com.apdallahy3.motosoftmoivestask.Data.Entities.MoiveResponse;
 import com.apdallahy3.motosoftmoivestask.Domain.DefaultObserver;
 import com.apdallahy3.motosoftmoivestask.Domain.Interactors.GetMoivesList;
-import com.apdallahy3.motosoftmoivestask.Presentation.View.MoiveListView;
+import com.apdallahy3.motosoftmoivestask.Presentation.View.Interfaces.MoiveListView;
 
 import java.util.List;
 
@@ -46,6 +46,7 @@ private final GetMoivesList getMoivesList;
     }
     private void showMoiveListInView(List<MoiveEntitiy> moiveEntitiys) {
        // final List<MoiveEntitiy> townshipModelList =
+
          this.moiveListView.getMoivesList(moiveEntitiys);
      }
     @Override
@@ -67,7 +68,7 @@ private final GetMoivesList getMoivesList;
          }
 
         @Override public void onNext(MoiveResponse moiveEntitiys) {
-            //Log.d("Data2",moiveEntitiys.getResults().size()+"");
+            Log.i("Presenter",moiveEntitiys.getResults().size()+"");
             MainActivityPresenter.this.showMoiveListInView(moiveEntitiys.getResults());
         }
     }

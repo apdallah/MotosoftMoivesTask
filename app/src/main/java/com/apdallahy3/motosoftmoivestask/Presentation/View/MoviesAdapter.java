@@ -1,24 +1,26 @@
 package com.apdallahy3.motosoftmoivestask.Presentation.View;
 
-import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.apdallahy3.motosoftmoivestask.Data.Entities.MoiveEntitiy;
+import com.apdallahy3.motosoftmoivestask.Presentation.View.Interfaces.OnItemClickListener;
 import com.apdallahy3.motosoftmoivestask.R;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.ViewHolder> {
-List<MoiveEntitiy>moivesList;
+List<MoiveEntitiy>moivesList=new ArrayList<MoiveEntitiy>();
 private final OnItemClickListener listener;
 
     public MoviesAdapter(OnItemClickListener listener) {
@@ -26,8 +28,9 @@ private final OnItemClickListener listener;
     }
 
     public void setMoivesList(List<MoiveEntitiy> moivesList) {
-
-        this.moivesList = moivesList;
+        Log.i("SetMoiveList",moivesList.size()+"");
+        this.moivesList.clear();
+        this.moivesList.addAll(moivesList) ;
         notifyDataSetChanged();
     }
 
@@ -51,7 +54,9 @@ private final OnItemClickListener listener;
 
     @Override
     public int getItemCount() {
-        return moivesList!=null?20:0;
+        Log.i("Adapter",moivesList.size()+"");
+
+        return moivesList!=null?moivesList.size():0;
     }
 
     class ViewHolder extends RecyclerView.ViewHolder{

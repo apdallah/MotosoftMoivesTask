@@ -70,8 +70,9 @@ public class MoiveResponse {
         return results;
     }
 
-    public void setResults(List<MoiveEntitiy> results) {
-        this.results = results;
+    public void setResults(List<MoiveEntitiy> results)
+    {
+         this.results = results;
     }
 
 }
