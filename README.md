@@ -10,3 +10,13 @@
 <li>6-UnitTesting </li>
 <li>7-Git </li>
 </ul>
+<h3>Screenshots</h3>
+<h6>Tablets</h6>
+
+ <img src="https://github.com/apdallah/MotosoftMoivesTask/blob/master/Screenshot_1539578492.png"/>
+ <img src="https://github.com/apdallah/MotosoftMoivesTask/blob/master/Screenshot_1539578502.png"/>
+ 
+ <h6>Mobiles</h6>
+<img src="https://github.com/apdallah/MotosoftMoivesTask/blob/master/Screenshot_1539578571.png"/>
+ <img src="https://github.com/apdallah/MotosoftMoivesTask/blob/master/Screenshot_1539578604.png"/>
+ 
