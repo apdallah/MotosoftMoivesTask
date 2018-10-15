@@ -1,6 +1,5 @@
 package com.apdallahy3.motosoftmoivestask.Presentation.View.Fragments;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
@@ -17,13 +16,12 @@ import com.apdallahy3.motosoftmoivestask.Data.Entities.MoiveEntitiy;
 import com.apdallahy3.motosoftmoivestask.Domain.Interactors.GetMoivesList;
 import com.apdallahy3.motosoftmoivestask.Domain.Repository.MoivesRepository;
 import com.apdallahy3.motosoftmoivestask.Presentation.Presenter.MainActivityPresenter;
-import com.apdallahy3.motosoftmoivestask.Presentation.View.Activites.MoiveDetailsActivity;
+import com.apdallahy3.motosoftmoivestask.Presentation.View.AutoFitGridRecyclerView;
 import com.apdallahy3.motosoftmoivestask.Presentation.View.Interfaces.MoiveListView;
 import com.apdallahy3.motosoftmoivestask.Presentation.View.MoviesAdapter;
 import com.apdallahy3.motosoftmoivestask.Presentation.View.Interfaces.OnItemClickListener;
 import com.apdallahy3.motosoftmoivestask.R;
 
-import java.io.Serializable;
 import java.util.List;
 
 import butterknife.BindView;
@@ -39,7 +37,7 @@ public class MoivesFragment extends Fragment implements MoiveListView {
     }
     View view;
     @BindView(R.id.recycler_view)
-    RecyclerView recyclerView;
+    AutoFitGridRecyclerView recyclerView;
 
     @BindView(R.id.progress_bar)
     ProgressBar progressBar;
@@ -55,16 +53,17 @@ public class MoivesFragment extends Fragment implements MoiveListView {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        view=inflater.inflate(R.layout.fragment_blank, container, false);
+        view=inflater.inflate(R.layout.fragment_moives, container, false);
         ButterKnife.bind(this,view);
         adapter=new MoviesAdapter( ((OnItemClickListener) getActivity()));
-        recyclerView.setLayoutManager(new GridLayoutManager(getContext(),3));
         recyclerView.setAdapter(adapter);
         moivesChache=new MoivesChacheImpl();
         moivesCloudDataStore=new MoivesCloudDataStore(moivesChache);
         getMoivesList=new GetMoivesList(moivesCloudDataStore);
         miMainActivityPresenter=new MainActivityPresenter(getMoivesList);
         miMainActivityPresenter.setMoiveListView(this);
+         recyclerView.setLayoutManager(new GridLayoutManager(getContext(),3));
+
         miMainActivityPresenter.initialize();
 
         return view;

@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
             MoivesDetailsFragment fragment = new MoivesDetailsFragment();
             fragment.setArguments(args);
             getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.content_view, fragment)
+                    .replace(R.id.movie_detail_container, fragment)
                      .commit();
         }else{
             Intent intent=new Intent(this,MoiveDetailsActivity.class);

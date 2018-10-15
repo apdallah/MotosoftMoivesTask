@@ -1,5 +1,7 @@
 package com.apdallahy3.motosoftmoivestask.Presentation.Presenter;
 
+import android.content.Context;
+import android.util.DisplayMetrics;
 import android.util.Log;
 
 import com.apdallahy3.motosoftmoivestask.Data.Entities.MoiveEntitiy;
